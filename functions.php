@@ -62,4 +62,4 @@ function displayAllSandwiches(array $sandwiches): string
     } return $info;
 }
 
-print_r(displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray)));
+//print_r(displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray)));
