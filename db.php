@@ -36,13 +36,20 @@ function fetchAll(PDO $dbConnection, string $sql, array $params = null): array
 function fetchAllSandwiches(PDO $dbConnection): array
 {
     $sql =
-    'SELECT `sandwiches`.`id`, `sandwiches`.`name`, `breads`.`bread`, `grains`.`grain`, `temperatures`.`temperature`, `image` FROM `sandwiches`
+    'SELECT `sandwiches`.`id`, `sandwiches`.`name`, `breads`.`bread`, `grains`.`grain`, `temperatures`.`temperature`, `ingredients`. `ingredient` 
+        FROM `sandwiches`
         INNER JOIN `breads`
         ON `sandwiches`.`bread` = `breads`. `id`
         INNER JOIN `grains`
         ON `sandwiches`. `grain` = `grains` . `id`
         INNER JOIN `temperatures`
-        ON `sandwiches`.`temperature` = `temperatures` . `id`;';
+        ON `sandwiches`.`temperature` = `temperatures` . `id`
+        LEFT JOIN `junct`
+        ON `sandwiches`.`id` = `junct`.`sandwich_fk`
+        LEFT JOIN `ingredients`
+        ON `junct`.`ingredient_fk` = `ingredients`. `id`
+        ORDER BY `sandwiches`.`id`;';
+
 
     return fetchAll($dbConnection, $sql);
 }
