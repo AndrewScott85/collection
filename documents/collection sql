@@ -1,0 +1,168 @@
+
+DROP TABLE IF EXISTS `breads`;
+
+CREATE TABLE `breads` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`bread` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+INSERT INTO `breads` (`bread`) VALUES ('roll');
+INSERT INTO `breads` (`bread`) VALUES ('baguette');
+INSERT INTO `breads` (`bread`) VALUES ('brioche');
+INSERT INTO `breads` (`bread`) VALUES ('focaccia');
+INSERT INTO `breads` (`bread`) VALUES ('flatbread');
+INSERT INTO `breads` (`bread`) VALUES ('sliced');
+INSERT INTO `breads` (`bread`) VALUES ('chapati');
+
+DROP TABLE IF EXISTS `grains`;
+
+CREATE TABLE `grains` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`grain` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+INSERT INTO `grains` (`grain`) VALUES ('white');
+INSERT INTO `grains` (`grain`) VALUES ('brown');
+
+DROP TABLE IF EXISTS `temperatures`;
+
+CREATE TABLE `temperatures` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`temperature` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+INSERT INTO `temperatures` (`temperature`) VALUES ('hot');
+INSERT INTO `temperatures` (`temperature`) VALUES ('cold');
+
+
+DROP TABLE IF EXISTS `ingredients`;
+CREATE TABLE `ingredients` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`ingredient` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`)
+);
+INSERT INTO `ingredients` (`ingredient`) VALUES ('avocado');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('bacon');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('beef');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('beef burger');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('blue cheese');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('cashew nuts');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('cheese');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('chili');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('chicken');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('chicken kiev');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('ham');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('hash brown');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('mayonnaise');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('mushrooms');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('olives');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('potato scone');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('potato waffle');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('salad');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('salami');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('sausage');
+INSERT INTO `ingredients` (`ingredient`) VALUES ('tomato');
+
+
+DROP TABLE IF EXISTS `sandwiches`;
+
+
+CREATE TABLE `sandwiches` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(255) DEFAULT NULL,
+`bread` int(11) unsigned DEFAULT NULL,
+`grain` int(11) unsigned DEFAULT NULL,
+`temperature` int(11) unsigned DEFAULT NULL,
+`image` varchar(255) DEFAULT NULL,
+PRIMARY KEY (`id`),
+CONSTRAINT `fk_bread_type` FOREIGN KEY (`bread`) REFERENCES `breads`(`id`),
+CONSTRAINT `fk_grain` FOREIGN KEY (`grain`) REFERENCES `grains`(`id`),
+CONSTRAINT `fk_temperature` FOREIGN KEY (`temperature`) REFERENCES `temperatures` (`id`) 
+);
+
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('breakfast', 1, 2, 1, 'breakfast.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image` ) VALUES ('kiev', 1, 2, 1, 'kiev.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('chicken banh-mi', 2, 1, 1, 'chickbanhmi.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('ham & cheese', 1, 2, 2, 'hamch.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('doubleburger', 1, 2, 1, 'doubleburg.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('sausage boat', 3, 1, 1, 'sausageboat.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('blue cheese & salami', 2, 2, 2, 'bluechsalam.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('muffaleta', 4, 1, 1, 'muffaleta.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('mcbreakfast', 5, 1, 1, 'mcbreakfast.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('toasted ham & cheese', 6, 1, 1, 'toasthamch.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('beef banh-mi', 2, 1, 1, 'beefbanhmi.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('chicken & avocado wrap', 7, 1, 1, 'chickavo.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('vegetarian', 1, 2, 2, 'vegetarian.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('french toast burger', 6, 2, 1, 'frtoastburg.jpg');
+
+DROP TABLE IF EXISTS `junct`;
+
+CREATE TABLE `junct` (
+`sandwich_fk` int(11) unsigned DEFAULT NULL,
+`ingredient_fk` int(11) unsigned DEFAULT NULL,
+CONSTRAINT `fk_sandwich` FOREIGN KEY (`sandwich_fk`) REFERENCES `sandwiches`(`id`),
+CONSTRAINT `fk_ingredient` FOREIGN KEY (`ingredient_fk`) REFERENCES `ingredients`(`id`)
+
+);
+
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (1, 2);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (1, 14);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (1, 16);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (2, 1);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (2, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (2, 10);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (2, 17);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (3, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (3, 9);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (3, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (4, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (4, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (4, 11);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (4, 15);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (4, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 1);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 2);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 4);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 10);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (5, 17);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (6, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (6, 20);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (7, 5);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (7, 19);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (8, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (8, 11);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (8, 13);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (8, 15);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (8, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (8, 21);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (9, 2);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (9, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (9, 12);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (10, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (10, 11);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (10, 13);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (10, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (11, 3);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (11, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (11, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (12, 1);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (12, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (12, 9);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (12, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (13, 1);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (13, 6);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (13, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (13, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (13, 15);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (13, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 4);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 6);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 7);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 8);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 15);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 18);
+INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 21);
+
+
