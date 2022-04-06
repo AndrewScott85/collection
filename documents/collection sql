@@ -80,20 +80,20 @@ CONSTRAINT `fk_grain` FOREIGN KEY (`grain`) REFERENCES `grains`(`id`),
 CONSTRAINT `fk_temperature` FOREIGN KEY (`temperature`) REFERENCES `temperatures` (`id`) 
 );
 
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('breakfast', 1, 2, 1, 'breakfast.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image` ) VALUES ('kiev', 1, 2, 1, 'kiev.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('chicken banh-mi', 2, 1, 1, 'chickbanhmi.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('ham & cheese', 1, 2, 2, 'hamch.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('doubleburger', 1, 2, 1, 'doubleburg.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('sausage boat', 3, 1, 1, 'sausageboat.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('blue cheese & salami', 2, 2, 2, 'bluechsalam.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('muffaleta', 4, 1, 1, 'muffaleta.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('mcbreakfast', 5, 1, 1, 'mcbreakfast.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('toasted ham & cheese', 6, 1, 1, 'toasthamch.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('beef banh-mi', 2, 1, 1, 'beefbanhmi.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('chicken & avocado wrap', 7, 1, 1, 'chickavo.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('vegetarian', 1, 2, 2, 'vegetarian.jpg');
-INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('french toast burger', 6, 2, 1, 'frtoastburg.jpg');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('breakfast', 1, 2, 1, 'breakfast.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image` ) VALUES ('kiev', 1, 2, 1, 'kiev.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('chicken banh-mi', 2, 1, 1, 'chickbanhmi.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('ham & cheese', 1, 2, 2, 'hamch.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('doubleburger', 1, 2, 1, 'doubleburg.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('sausage boat', 3, 1, 1, 'sausageboat.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('blue cheese & salami', 2, 2, 2, 'bluechsalam.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('muffaleta', 4, 1, 1, 'muffaleta.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('mcbreakfast', 5, 1, 1, 'mcbreakfast.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('toasted ham & cheese', 6, 1, 1, 'toasthamch.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('beef banh-mi', 2, 1, 1, 'beefbanhmi.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('chicken & avocado wrap', 7, 1, 1, 'chickavo.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('vegetarian', 1, 2, 2, 'vegetarian.png');
+INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('french toast burger', 6, 2, 1, 'frtoastburg.png');
 
 DROP TABLE IF EXISTS `junct`;
 

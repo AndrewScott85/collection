@@ -2,6 +2,8 @@
 require_once 'db.php';
 require_once 'Sandwich.php';
 require_once 'functions.php';
+$db = 'sandwiches';
+$sandwichesArray = fetchAllSandwiches(connectToDB($db));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +17,10 @@ require_once 'functions.php';
 
 </head>
 <body>
+<div class="container">
 <?php
 echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
 ?>
+</div>
 </body>
 </html>

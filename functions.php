@@ -1,18 +1,8 @@
 <?php
-require_once 'db.php';
 require_once 'Sandwich.php';
-$db = 'sandwiches';
-$sandwichesArray = fetchAllSandwiches(connectToDB($db));
-
-//echo '<pre>';
-//print_r ($sandwichesArray);
-//echo '</pre>';
 
 function createArrayOfSandwichObjects(array $sandwichesDb): array
 {
-//    echo '<pre>';
-//    print_r($usersDb);
-//    echo '</pre>';
     $sandwiches = [];
     $currentId = -1;
     foreach ($sandwichesDb as $sandwich) {
@@ -39,27 +29,18 @@ function createArrayOfSandwichObjects(array $sandwichesDb): array
     return $sandwiches;
 }
 
-//echo '<pre>';
-//print_r(createArrayOfSandwichObjects($sandwichesArray));
-//echo '</pre>';
-//
-
 function displayAllSandwiches(array $sandwiches): string
 {
     $info = '';
     foreach ($sandwiches as $sandwich) {
         $info .=
-            '<section class= "sandwichcontainer">' .
-            '<div class="sandwichinfo">' .
+            '<section class="sandwichcontainer">' .
             '<h2>' . ucfirst($sandwich->getName()) . '</h2>' .
             '<img src="images/' . $sandwich->getImage() . '">' .
             '<p>Bread : ' . ucfirst($sandwich->getGrain()) . ' ' . $sandwich->getBread() . '</p>' .
-            '<p> Filled with : ' . ucfirst(implode(", ", $sandwich->getIngredients())) . '</p>' .
-            '<p> Served ' . ucfirst($sandwich->getTemperature()) . '</p>' .
-            '</div>' .
+            '<p>Filled with : ' . ucfirst(implode(", ", $sandwich->getIngredients())) . '</p>' .
+            '<p>Served ' . ucfirst($sandwich->getTemperature()) . '</p>' .
             '</section>';
 
     } return $info;
 }
-
-//print_r(displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray)));
