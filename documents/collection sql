@@ -2,9 +2,9 @@
 DROP TABLE IF EXISTS `breads`;
 
 CREATE TABLE `breads` (
-`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`bread` varchar(255) DEFAULT NULL,
-PRIMARY KEY (`id`)
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `bread` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
 );
 INSERT INTO `breads` (`bread`) VALUES ('roll');
 INSERT INTO `breads` (`bread`) VALUES ('baguette');
@@ -17,9 +17,9 @@ INSERT INTO `breads` (`bread`) VALUES ('chapati');
 DROP TABLE IF EXISTS `grains`;
 
 CREATE TABLE `grains` (
-`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`grain` varchar(255) DEFAULT NULL,
-PRIMARY KEY (`id`)
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `grain` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
 );
 INSERT INTO `grains` (`grain`) VALUES ('white');
 INSERT INTO `grains` (`grain`) VALUES ('brown');
@@ -27,9 +27,9 @@ INSERT INTO `grains` (`grain`) VALUES ('brown');
 DROP TABLE IF EXISTS `temperatures`;
 
 CREATE TABLE `temperatures` (
-`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`temperature` varchar(255) DEFAULT NULL,
-PRIMARY KEY (`id`)
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `temperature` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
 );
 INSERT INTO `temperatures` (`temperature`) VALUES ('hot');
 INSERT INTO `temperatures` (`temperature`) VALUES ('cold');
@@ -37,9 +37,9 @@ INSERT INTO `temperatures` (`temperature`) VALUES ('cold');
 DROP TABLE IF EXISTS `ingredients`;
 
 CREATE TABLE `ingredients` (
-`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`ingredient` varchar(255) DEFAULT NULL,
-PRIMARY KEY (`id`)
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `ingredient` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
 );
 INSERT INTO `ingredients` (`ingredient`) VALUES ('avocado');
 INSERT INTO `ingredients` (`ingredient`) VALUES ('bacon');
@@ -66,16 +66,16 @@ INSERT INTO `ingredients` (`ingredient`) VALUES ('tomato');
 DROP TABLE IF EXISTS `sandwiches`;
 
 CREATE TABLE `sandwiches` (
-`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(255) DEFAULT NULL,
-`bread` int(11) unsigned DEFAULT NULL,
-`grain` int(11) unsigned DEFAULT NULL,
-`temperature` int(11) unsigned DEFAULT NULL,
-`image` varchar(255) DEFAULT NULL,
-PRIMARY KEY (`id`),
-CONSTRAINT `fk_bread_type` FOREIGN KEY (`bread`) REFERENCES `breads`(`id`),
-CONSTRAINT `fk_grain` FOREIGN KEY (`grain`) REFERENCES `grains`(`id`),
-CONSTRAINT `fk_temperature` FOREIGN KEY (`temperature`) REFERENCES `temperatures` (`id`) 
+    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) DEFAULT NULL,
+    `bread` int(11) unsigned DEFAULT NULL,
+    `grain` int(11) unsigned DEFAULT NULL,
+    `temperature` int(11) unsigned DEFAULT NULL,
+    `image` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    CONSTRAINT `fk_bread_type` FOREIGN KEY (`bread`) REFERENCES `breads`(`id`),
+    CONSTRAINT `fk_grain` FOREIGN KEY (`grain`) REFERENCES `grains`(`id`),
+    CONSTRAINT `fk_temperature` FOREIGN KEY (`temperature`) REFERENCES `temperatures` (`id`)
 );
 
 INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALUES ('breakfast', 1, 2, 1, 'breakfast.png');
@@ -96,11 +96,10 @@ INSERT INTO `sandwiches` (`name`, `bread`, `grain`, `temperature`, `image`) VALU
 DROP TABLE IF EXISTS `junct`;
 
 CREATE TABLE `junct` (
-`sandwich_fk` int(11) unsigned DEFAULT NULL,
-`ingredient_fk` int(11) unsigned DEFAULT NULL,
-CONSTRAINT `fk_sandwich` FOREIGN KEY (`sandwich_fk`) REFERENCES `sandwiches`(`id`),
-CONSTRAINT `fk_ingredient` FOREIGN KEY (`ingredient_fk`) REFERENCES `ingredients`(`id`)
-
+    `sandwich_fk` int(11) unsigned DEFAULT NULL,
+    `ingredient_fk` int(11) unsigned DEFAULT NULL,
+    CONSTRAINT `fk_sandwich` FOREIGN KEY (`sandwich_fk`) REFERENCES `sandwiches`(`id`),
+    CONSTRAINT `fk_ingredient` FOREIGN KEY (`ingredient_fk`) REFERENCES `ingredients`(`id`)
 );
 
 INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (1, 2);

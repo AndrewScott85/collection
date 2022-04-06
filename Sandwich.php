@@ -26,7 +26,6 @@ class Sandwich
         string $grain,
         string $temperature,
         string $ingredients
-
     ) {
         $this->id = $id;
         $this->name = $name;

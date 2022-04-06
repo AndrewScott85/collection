@@ -56,6 +56,5 @@ function fetchAllSandwiches(PDO $dbConnection): array
         ON `junct`.`ingredient_fk` = `ingredients`. `id`
         ORDER BY `sandwiches`.`id`;';
 
-
     return fetchAll($dbConnection, $sql);
 }
