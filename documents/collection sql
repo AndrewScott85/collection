@@ -34,8 +34,8 @@ PRIMARY KEY (`id`)
 INSERT INTO `temperatures` (`temperature`) VALUES ('hot');
 INSERT INTO `temperatures` (`temperature`) VALUES ('cold');
 
-
 DROP TABLE IF EXISTS `ingredients`;
+
 CREATE TABLE `ingredients` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `ingredient` varchar(255) DEFAULT NULL,
@@ -63,9 +63,7 @@ INSERT INTO `ingredients` (`ingredient`) VALUES ('salami');
 INSERT INTO `ingredients` (`ingredient`) VALUES ('sausage');
 INSERT INTO `ingredients` (`ingredient`) VALUES ('tomato');
 
-
 DROP TABLE IF EXISTS `sandwiches`;
-
 
 CREATE TABLE `sandwiches` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -164,5 +162,3 @@ INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 8);
 INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 15);
 INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 18);
 INSERT INTO `junct` (`sandwich_fk`, `ingredient_fk`) VALUES (14, 21);
-
-

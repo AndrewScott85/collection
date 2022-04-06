@@ -41,6 +41,6 @@ function displayAllSandwiches(array $sandwiches): string
             '<p>Filled with : ' . ucfirst(implode(", ", $sandwich->getIngredients())) . '</p>' .
             '<p>Served ' . ucfirst($sandwich->getTemperature()) . '</p>' .
             '</section>';
-
-    } return $info;
+    }
+    return $info;
 }

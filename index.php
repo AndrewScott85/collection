@@ -14,13 +14,12 @@ $sandwichesArray = fetchAllSandwiches(connectToDB($db));
     <link href="css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <title>Sandwiches</title>
-
 </head>
 <body>
 <div class="container">
-<?php
-echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
-?>
+    <?php
+    echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
+    ?>
 </div>
 </body>
 </html>

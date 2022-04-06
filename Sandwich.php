@@ -37,8 +37,6 @@ class Sandwich
         $this->ingredients[] = $ingredients;
     }
 
-
-
     /**
      * @return int
      */
