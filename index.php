@@ -16,10 +16,10 @@ $sandwichesArray = fetchAllSandwiches(connectToDB($db));
     <title>Sandwiches</title>
 </head>
 <body>
-<div class="container">
-    <?php
-    echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
-    ?>
-</div>
+    <div class="container">
+        <?php
+        echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
+        ?>
+    </div>
 </body>
 </html>
