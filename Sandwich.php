@@ -3,6 +3,7 @@ class Sandwich
 {
     private int $id;
     private string $name;
+    private string $image;
     private string $bread;
     private string $grain;
     private string $temperature;
@@ -11,6 +12,7 @@ class Sandwich
     /**
      * @param int $id
      * @param string $name
+     * @param string $image
      * @param string $bread
      * @param string $grain
      * @param string $temperature
@@ -19,13 +21,16 @@ class Sandwich
     public function __construct(
         int $id,
         string $name,
+        string $image,
         string $bread,
         string $grain,
         string $temperature,
         string $ingredients
+
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->image = $image;
         $this->bread = $bread;
         $this->grain = $grain;
         $this->temperature = $temperature;
@@ -46,6 +51,14 @@ class Sandwich
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
     }
 
     /**

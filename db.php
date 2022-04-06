@@ -36,7 +36,13 @@ function fetchAll(PDO $dbConnection, string $sql, array $params = null): array
 function fetchAllSandwiches(PDO $dbConnection): array
 {
     $sql =
-    'SELECT `sandwiches`.`id`, `sandwiches`.`name`, `breads`.`bread`, `grains`.`grain`, `temperatures`.`temperature`, `ingredients`. `ingredient` 
+    'SELECT `sandwiches`.`id`, 
+       `sandwiches`.`name`, 
+       `breads`.`bread`, 
+       `grains`.`grain`, 
+       `temperatures`.`temperature`, 
+       `ingredients`. `ingredient`, 
+       `sandwiches` . `image`
         FROM `sandwiches`
         INNER JOIN `breads`
         ON `sandwiches`.`bread` = `breads`. `id`

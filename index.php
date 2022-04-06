@@ -1,76 +1,25 @@
 <?php
 require_once 'db.php';
 require_once 'Sandwich.php';
+require_once 'functions.php';
 $db = 'sandwiches';
-$sandwiches = fetchAllSandwiches(connectToDB($db));
-
-//echo '<pre>';
-//print_r ($sandwiches);
-//echo '</pre>';
-
-function createArrayOfSandwichObjects(array $sandwichesDb): array
-{
-//    echo '<pre>';
-//    print_r($usersDb);
-//    echo '</pre>';
-    $sandwiches = [];
-    $currentId = -1;
-    foreach ($sandwichesDb as $sandwich) {
-        if ($sandwich['id'] !== $currentId) {
-            $sandwichIngredient = $sandwich['ingredient'];
-            if ($sandwichIngredient === null) {
-                $sandwichIngredient = '';
-            }
-            $sandwichObj = new Sandwich(
-                $sandwich['id'],
-                $sandwich['name'],
-                $sandwich['bread'],
-                $sandwich['grain'],
-                $sandwich['temperature'],
-                $sandwichIngredient
-            );
-            $currentId = $sandwich['id'];
-            $sandwiches[$currentId] = $sandwichObj;
-        } else {
-            $sandwiches[$currentId]->addIngredient($sandwich['ingredient']);
-        }
-    }
-    return $sandwiches;
-}
-
-echo '<pre>';
-print_r(createArrayOfSandwichObjects($sandwiches));
-echo '</pre>';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//function createArrayOfSandwiches(array $sandwiches): array
-//{
-//    $sandArray = [];
-//    $ingArray = [];
-//    foreach ($sandwiches as $sandwich) {
-//        $sandwich['ingArray'] = $ingArray;
-//        if (!in_array($sandwich['id'], $sandArray)){
-//            $ingArray[] = $sandwich['ingredient'];
-//            $sandArray[] = $sandwich;
-//        }
-//        else {
-//            $sandwich[$ingArray][] = $sandwich['ingredient'];
-//        }
-//    }
-//    return $sandArray;
-//}
-//echo '<pre>';
-//print_r (createArrayOfSandwiches($sandwiches));
-//echo '</pre>';
+$sandwichesArray = fetchAllSandwiches(connectToDB($db));
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Sandwiches</title>
+</head>
+<body>
+    <div class="container">
+        <?php
+        echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
+        ?>
+    </div>
+</body>
+</html>
