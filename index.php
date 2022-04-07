@@ -3,7 +3,12 @@ require_once 'db.php';
 require_once 'Sandwich.php';
 require_once 'functions.php';
 $db = 'sandwiches';
-$sandwichesArray = fetchAllSandwiches(connectToDB($db));
+$pdo = connectToDB($db);
+$sandwichesArray = fetchAllSandwiches($pdo);
+$grains = fetchGrains($pdo);
+$breads = fetchBreads($pdo);
+$temperatures = fetchTemperatures($pdo);
+$ingredients = fetchIngredients($pdo);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +21,106 @@ $sandwichesArray = fetchAllSandwiches(connectToDB($db));
     <title>Sandwiches</title>
 </head>
 <body>
-    <div class="container">
+<section class="title">
+    <h1>Sandwich Collection</h1>
+    <h2>Some sandwiches I've eaten and enjoyed</h2>
+</section>
+<section class="container">
+    <?php
+    echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
+    ?>
+</section>
+<div>
+    <form action="addSandwich.php" method="post" enctype="multipart/form-data">
+        <label for="name" >Name</label>
         <?php
-        echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
+        if (empty($_POST["name"])) {
+            $nameError = "Name is required";
+        }
         ?>
-    </div>
+        <input type="text" name="name" required>
+        <label for="bread" >Bread Type</label>
+        <select name="bread" required>
+            <?php
+            foreach ($breads as $bread) {
+                echo '<option value="' . $bread['id'] . '">'
+                    . $bread['bread']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="grain" >Grain</label>
+        <select name="grain" required>
+            <?php
+            foreach ($grains as $grain) {
+                echo '<option value="' . $grain['id'] . '">'
+                    . $grain['grain']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="temperature" >Serving Temperature</label>
+        <select name="temperature" required>
+            <?php
+            foreach ($temperatures as $temperature) {
+                echo '<option value="' . $temperature['id'] . '">'
+                    . $temperature['temperature']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="ingredient1" >Ingredient 1</label>
+        <select id="ingredient1" name="ingredient1" >
+            <option value="-1"></option>
+            <?php
+            foreach ($ingredients as $ingredient) {
+                echo '<option value="' . $ingredient['id'] . '">'
+                    . $ingredient['ingredient']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="ingredient2" >Ingredient 2</label>
+        <select id="ingredient2" name="ingredient2" >
+            <option value="-1"></option>
+            <?php
+            foreach ($ingredients as $ingredient) {
+                echo '<option value="' . $ingredient['id'] . '">'
+                    . $ingredient['ingredient']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="ingredient3" >Ingredient 3</label>
+        <select id="ingredient3" name="ingredient3" >
+            <option value="-1"></option>
+            <?php
+            foreach ($ingredients as $ingredient) {
+                echo '<option value="' . $ingredient['id'] . '">'
+                    . $ingredient['ingredient']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="ingredient4" >Ingredient 4</label>
+        <select id="ingredient4" name="ingredient4" >
+            <option value="-1"></option>
+            <?php
+            foreach ($ingredients as $ingredient) {
+                echo '<option value="' . $ingredient['id'] . '">'
+                    . $ingredient['ingredient']
+                    . '</option>';
+            }
+            ?>
+        </select>
+        <label for="image" >Image</label>
+        <input type="file" name="newFile">
+        <input type="submit" value="Upload">
+    </form>
+</div>
+<div>
+    <br><br><br><br><br><br><br><br>
+</div>
+
 </body>
 </html>

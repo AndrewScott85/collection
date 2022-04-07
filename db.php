@@ -36,7 +36,7 @@ function fetchAll(PDO $dbConnection, string $sql, array $params = null): array
 function fetchAllSandwiches(PDO $dbConnection): array
 {
     $sql =
-    'SELECT `sandwiches`.`id`, 
+        'SELECT `sandwiches`.`id`, 
        `sandwiches`.`name`, 
        `breads`.`bread`, 
        `grains`.`grain`, 
@@ -57,4 +57,47 @@ function fetchAllSandwiches(PDO $dbConnection): array
         ORDER BY `sandwiches`.`id`;';
 
     return fetchAll($dbConnection, $sql);
+}
+
+function fetchGrains(PDO $pdo): array
+{
+    $sql =
+        'SELECT `grains`.`id`, `grains`.`grain`' .
+        ' FROM `grains` ' .
+        ' ORDER BY `grains`.`grain`;';
+
+    return fetchAll($pdo, $sql);
+}
+
+function fetchBreads(PDO $pdo): array
+{
+    $sql =
+        'SELECT `breads`.`id`, 
+       `breads`.`bread`
+        FROM `breads`
+        ORDER BY `breads`.`bread`;';
+
+    return fetchAll($pdo, $sql);
+}
+
+function fetchTemperatures(PDO $pdo): array
+{
+    $sql =
+        'SELECT `temperatures`.`id`, 
+       `temperatures`.`temperature`
+        FROM `temperatures`
+        ORDER BY `temperatures`.`temperature`;';
+
+    return fetchAll($pdo, $sql);
+}
+
+function fetchIngredients(PDO $pdo): array
+{
+    $sql =
+        'SELECT `ingredients`.`id`, 
+       `ingredients`.`ingredient`
+        FROM `ingredients`
+        ORDER BY `ingredients`.`ingredient`;';
+
+    return fetchAll($pdo, $sql);
 }
