@@ -30,7 +30,8 @@ $ingredients = fetchIngredients($pdo);
     echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
     ?>
 </section>
-<div>
+<div class="form">
+    <h2 class="formheading">Add a new delicious sandwich below with up to 4 ingredients</h2>
     <form action="addSandwich.php" method="post" enctype="multipart/form-data">
         <label for="name" >Name</label>
         <?php
@@ -118,9 +119,5 @@ $ingredients = fetchIngredients($pdo);
         <input type="submit" value="Upload">
     </form>
 </div>
-<div>
-    <br><br><br><br><br><br><br><br>
-</div>
-
 </body>
 </html>
