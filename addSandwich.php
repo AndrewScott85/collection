@@ -120,7 +120,6 @@ function addToJunct(PDO $pdo, int $sandwich_fk, int $ingredient_fk): void
 $imageString = uploadFile(); // this calls the function and puts the return value in $imageString
 
 if (strpos(strtolower($imageString), 'success')) { // if the variable contains the string 'success'
-
     $imageString = substr($imageString, 9); // remove the first 9 characters from -success-
 }
 else {

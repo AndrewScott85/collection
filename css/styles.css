@@ -7,8 +7,10 @@ p {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 .container {
     margin: auto;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,19 +19,27 @@ p {
 
 .image {
     width: 100%;
-    height: auto;
+    aspect-ratio: 3/2;
     border-top: solid 1px #000000;
     border-bottom: solid 1px #000000;
     background-color: gray;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image:hover {
+    transform: scale(1.5);
+    border-radius: 3rem;
 }
 
 .sandwichcontainer {
     display: flex;
+    flex: 1;
     flex-direction: column;
     border: solid 1px #000000;
     border-radius: 5px;
     max-width: 70vw;
     text-align: center;
+    box-shadow: 0 3px 5px #00000005;
 }
 
 .sandwichcontainer:hover {
