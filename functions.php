@@ -37,9 +37,9 @@ function displayAllSandwiches(array $sandwiches): string
             '<section class="sandwichcontainer">' .
             '<h2>' . ucfirst($sandwich->getName()) . '</h2>' .
             '<img class="image" src="images/' . $sandwich->getImage() . '" alt="sandwichimage">' .
-            '<p>Bread : ' . ucfirst($sandwich->getGrain()) . ' ' . $sandwich->getBread() . '</p>' .
-            '<p>Filled with : ' . ucfirst(implode(", ", $sandwich->getIngredients())) . '</p>' .
-            '<p>Served ' . ucfirst($sandwich->getTemperature()) . '</p>' .
+            '<p>Bread: ' . ucfirst($sandwich->getGrain()) . ' ' . $sandwich->getBread() . '</p>' .
+            '<p>Filled with: ' . ucfirst(implode(", ", $sandwich->getIngredients())) . '</p>' .
+            '<p>Served: ' . ucfirst($sandwich->getTemperature()) . '</p>' .
             '</section>';
     }
     return $info;
