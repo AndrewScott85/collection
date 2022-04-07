@@ -99,5 +99,4 @@ class Sandwich
     {
         $this->ingredients[] = $ingredient;
     }
-
 }
