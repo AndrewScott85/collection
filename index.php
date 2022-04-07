@@ -21,34 +21,26 @@ $ingredients = fetchIngredients($pdo);
     <title>Sandwiches</title>
 </head>
 <body>
+<section class="title">
+    <h1>Sandwich Collection</h1>
+    <h2>Some sandwiches I've eaten and enjoyed</h2>
+</section>
+<section class="container">
+    <?php
+    echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
+    ?>
+</section>
 <div>
-<!--    --><?php
-//    if (isset($_POST['create'])) {
-//        $name = $_POST['name'];
-//        $bread = $_POST['bread'];
-//        $grain = $_POST['grain'];
-//        $temperature = $_POST['temperature'];
-//        $image = $_POST['image'];
-//        echo $name . ' ' . $bread . ' ' . $grain . ' ' . $temperature . ' ' . $image;
-//
-//        $sql = "INSERT INTO `sandwiches` (`name`,`bread`, `grain`, `temperature`, `image`)" .
-//            "VALUES ('$name', '$bread', '$grain', '$temperature', '$image')";
-//        $stmtinsert = connectToDB('sandwiches')->prepare($sql);
-//        $results = $stmtinsert->execute();
-//        if ($results) {
-//            echo ' works';
-//        } else {
-//            echo 'doesn\'t work';
-//        }
-//    }
-//    ?>
-</div>
-<div>
-    <form action="addSandwich.php" method="post">
+    <form action="addSandwich.php" method="post" enctype="multipart/form-data">
         <label for="name" >Name</label>
-        <input type="text" name="name" >
+        <?php
+        if (empty($_POST["name"])) {
+            $nameError = "Name is required";
+        }
+        ?>
+        <input type="text" name="name" required>
         <label for="bread" >Bread Type</label>
-        <select name="bread" >
+        <select name="bread" required>
             <?php
             foreach ($breads as $bread) {
                 echo '<option value="' . $bread['id'] . '">'
@@ -58,7 +50,7 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="grain" >Grain</label>
-        <select name="grain">
+        <select name="grain" required>
             <?php
             foreach ($grains as $grain) {
                 echo '<option value="' . $grain['id'] . '">'
@@ -68,7 +60,7 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="temperature" >Serving Temperature</label>
-        <select name="temperature" >
+        <select name="temperature" required>
             <?php
             foreach ($temperatures as $temperature) {
                 echo '<option value="' . $temperature['id'] . '">'
@@ -78,7 +70,7 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="ingredient1" >Ingredient 1</label>
-        <select name="ingredient1" >
+        <select id="ingredient1" name="ingredient1" >
             <option value="-1"></option>
             <?php
             foreach ($ingredients as $ingredient) {
@@ -89,7 +81,7 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="ingredient2" >Ingredient 2</label>
-        <select name="ingredient2" >
+        <select id="ingredient2" name="ingredient2" >
             <option value="-1"></option>
             <?php
             foreach ($ingredients as $ingredient) {
@@ -100,7 +92,7 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="ingredient3" >Ingredient 3</label>
-        <select name="ingredient3" >
+        <select id="ingredient3" name="ingredient3" >
             <option value="-1"></option>
             <?php
             foreach ($ingredients as $ingredient) {
@@ -111,7 +103,7 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="ingredient4" >Ingredient 4</label>
-        <select name="ingredient4" >
+        <select id="ingredient4" name="ingredient4" >
             <option value="-1"></option>
             <?php
             foreach ($ingredients as $ingredient) {
@@ -122,18 +114,13 @@ $ingredients = fetchIngredients($pdo);
             ?>
         </select>
         <label for="image" >Image</label>
-        <input type="text" name="image">
-        <input type="submit" name="create" value="ADD">
+        <input type="file" name="newFile">
+        <input type="submit" value="Upload">
     </form>
 </div>
 <div>
     <br><br><br><br><br><br><br><br>
 </div>
-    <div class="container">
-        <?php
-        echo displayAllSandwiches(createArrayOfSandwichObjects($sandwichesArray));
-        ?>
-    </div>
 
 </body>
 </html>
