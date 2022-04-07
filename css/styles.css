@@ -1,30 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3rem;
+* {
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
+.title {
     text-align: center;
 }
 
-@media only screen and (min-width: 600px) {
+p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.container {
+    margin: auto;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.image {
+    width: 100%;
+    aspect-ratio: 3/2;
+    border-top: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    background-color: gray;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image:hover {
+    transform: scale(1.2);
+    border-radius: 3rem;
+}
+
+.sandwichcontainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border: solid 1px #000000;
+    border-radius: 5px;
+    max-width: 70vw;
+    text-align: center;
+    box-shadow: 0 3px 5px #00000005;
+}
+
+.sandwichcontainer:hover {
+    transform: scale(1.05);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+@media only screen and (min-width: 700px) {
 
     .container {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        gap: 3rem;
+        align-items: stretch;
+        gap: 2rem;
     }
 
-    .sandwichinfo {
-        display: flex;
-        flex-direction: column;
-        max-width: 30%;
+    .sandwichcontainer {
+        max-width: 25vw;
+        min-width: 250px;
+        justify-content: space-evenly;
     }
 }
