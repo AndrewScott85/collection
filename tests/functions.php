@@ -18,8 +18,8 @@ class functions extends TestCase
     public function testDisplayAllSandwiches_GivenValidSandwichReturnValidHTML()
     {
         $expected = '<section class="sandwichcontainer"><h2>Breakfast</h2>' .
-            '<img src="images/breakfast.png"><p>Bread : Brown roll</p>' .
-            '<p>Filled with : Bacon, mushrooms, potato scone</p><p>Served Hot</p>' .
+            '<img class="image" src="images/breakfast.png" alt="sandwichimage"><p>Bread: Brown roll</p>' .
+            '<p>Filled with: Bacon, mushrooms, potato scone</p><p>Served: Hot</p>' .
             '</section>';
         $sandwich = new Sandwich(
              1,
